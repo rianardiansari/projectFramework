@@ -61,8 +61,6 @@ public class ApiPage {
         assertThat(email.get(0)).isNotNull();
         assertThat(gender.get(0)).isIn("female", "male");
         assertThat(status.get(0)).isIn("active", "inactive");
-
-
     }
 
     public void validationResponseJsonWithJSONSchema(String filename) {
@@ -105,6 +103,28 @@ public class ApiPage {
         assertThat(email).isNotNull();
         assertThat(gender).isIn("female", "male");
         assertThat(status).isIn("active", "inactive");
+    }
+
+    public void validationResponseJsonWithJSONSchema1(String filename) {
+        File JSONFile = Utility.getJSONSchemaFile(filename);
+        res.then().assertThat().body(JsonSchemaValidator.matchesJsonSchema(JSONFile));
+    }
+
+    public void validationResponseBodyCreateNewUsers1() {
+        JsonPath jsonPathEvaluator = res.jsonPath();
+        Integer id = jsonPathEvaluator.get("id");
+        String name = jsonPathEvaluator.get("name");
+        String email = jsonPathEvaluator.get("email");
+        String gender = jsonPathEvaluator.get("gender");
+        String status = jsonPathEvaluator.get("status");
+
+        assertThat(id).isNotNull();
+        assertThat(name).isNotNull();
+        assertThat(email).isNotNull();
+        assertThat(gender).isIn("female", "male");
+        assertThat(status).isIn("active", "inactive");
+
+        global_id = Integer.toString(id);
     }
 }
 

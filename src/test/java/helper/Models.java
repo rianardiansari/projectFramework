@@ -58,5 +58,21 @@ public class Models {
         String finalEndpoint = endpoint + "/" + user_id;
         return request.body(payload.toString()).when().patch(finalEndpoint);
     }
+
+    public static Response postCreateUser1(String endpoint){
+        String name = "Riana Ardiansari";
+        String gender = "female";
+        String email = generateRandomEmail();
+        String status = "active";
+        JSONObject payload = new JSONObject();
+        payload.put("name", name);
+        payload.put("gender", gender);
+        payload.put("email", email);
+        payload.put("status", status);
+
+        setupHeaders();
+        return request.body(payload.toString()).when().post(endpoint);
+
+    }
 }
 

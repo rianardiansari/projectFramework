@@ -35,3 +35,12 @@ Feature: Test Automation Rest Api
      And hit api update data
      Then validation status code is equals 200
      Then validation response body update user
+
+
+  @api
+  Scenario: Test create new user normal
+    Given prepare url for "CREATE_NEW_USERS1"
+    And hit api post create new user
+    Then validation status code is equals 201
+    Then validation response body post create new user
+    Then validation response json with JSONSchema "post_create_new_user_normal.json"
