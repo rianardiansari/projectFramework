@@ -22,4 +22,7 @@ Menjalankan Project :
 3. Create function di page class
 4. Create function di models class
 5. Create function Endpoint, utility class
+6. Create function di runner class
+7. Convert json to json schema data di liquid.technologies.com
+8. Create json schema data file
 
