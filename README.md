@@ -27,5 +27,6 @@ Menjalankan Project :
 8. Create json schema data file
 
 Test Case Negatif :
-<img width="1115" alt="Screenshot 2023-12-06 at 12 27 49" src="https://github.com/rianardiansari/projectFramework/assets/149749846/dd4ccca7-b473-4948-b2b5-72c79a620994">
+<img width="1326" alt="Screenshot 2023-12-12 at 08 37 04" src="https://github.com/rianardiansari/projectFramework/assets/149749846/01524257-a327-4929-8227-c1d96f2c1c43">
+
 
