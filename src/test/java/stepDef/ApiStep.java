@@ -60,14 +60,24 @@ public class ApiStep {
         apiPage.validationResponseBodyUpdateUser();
     }
 
-    @And("hit api post create new user1")
-    public void hitApiPostCreateNewUser1() {
-        apiPage.hitApiPostCreateUser();
+    @And("hit api post negative create new user")
+    public void hitApiPostNegativeCreateNewUser() {
+        apiPage.hitApiPostNegativeCreateNewUser();
     }
 
-    @Then("validation response body post create new user1")
-    public void validationResponseBodyPostCreateNewUser1() {
-        apiPage.validationResponseBodyCreateNewUsers();
+    @Then("validation response body post negative create new user")
+    public void validationResponseBodyPostNegativeCreateNewUser() {
+        apiPage.validationResponseBodyNegativeCreateNewUsers();
+    }
+
+    @And("hit api post edge create new user")
+    public void hitApiPostEdgeCreateNewUser() {
+        apiPage.hitApiPostEdgeCreateNewUser();
+    }
+
+    @Then("validation response body post edge create new user")
+    public void validationResponseBodyPostEdgeCreateNewUser() {
+        apiPage.validationResponseBodyEdgeCreateNewUsers();
     }
 }
 

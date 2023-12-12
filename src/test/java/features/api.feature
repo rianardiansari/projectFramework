@@ -38,9 +38,18 @@ Feature: Test Automation Rest Api
 
 
   @api
-  Scenario: Test create new user normal
-    Given prepare url for "CREATE_NEW_USERS1"
-    And hit api post create new user
+  Scenario: Negative Test - create new user
+    Given prepare url for "NEGATIVE_CREATE_NEW_USERS"
+    And hit api post negative create new user
+    Then validation status code is equals 422
+    Then validation response body post negative create new user
+    Then validation response json with JSONSchema "post_negative_create_new_user.json"
+
+  @api
+  Scenario: Edge Test - create new user
+    Given prepare url for "EDGE_CREATE_NEW_USERS"
+    And hit api post edge create new user
     Then validation status code is equals 201
-    Then validation response body post create new user
-    Then validation response json with JSONSchema "post_create_new_user_normal.json"
+    Then validation response body post edge create new user
+    Then validation response json with JSONSchema "post_edge_create_new_user.json"
+

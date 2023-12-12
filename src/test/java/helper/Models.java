@@ -16,6 +16,12 @@ public class Models {
                 .header("Authorization", "Bearer 4f6b1c6ff78665c9cd68d4c2322e0739aa4cfefb78467731c374e6f6ab0f294a");
     }
 
+    public static void setupHeaders2() {
+        request = RestAssured.given()
+                .header("Content-Type", "application/json")
+                .header("Accept", "application/json");
+    }
+
     public static Response getListUsers(String endpoint) {
         setupHeaders();
         return request.when().get(endpoint);
@@ -59,9 +65,9 @@ public class Models {
         return request.body(payload.toString()).when().patch(finalEndpoint);
     }
 
-    public static Response postCreateUser1(String endpoint){
+    public static Response postNegativeCreateUser(String endpoint){
         String name = "Riana Ardiansari";
-        String gender = "female";
+        String gender = "other";
         String email = generateRandomEmail();
         String status = "active";
         JSONObject payload = new JSONObject();
@@ -71,6 +77,19 @@ public class Models {
         payload.put("status", status);
 
         setupHeaders();
+        return request.body(payload.toString()).when().post(endpoint);
+
+    }
+
+    public static Response postEdgeCreateUser(String endpoint){
+        String name = "Riana Ardiansari";
+        Integer age = 99;
+
+        JSONObject payload = new JSONObject();
+        payload.put("name", name);
+        payload.put("age", age);
+
+        setupHeaders2();
         return request.body(payload.toString()).when().post(endpoint);
 
     }

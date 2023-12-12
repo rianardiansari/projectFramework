@@ -31,6 +31,12 @@ public class ApiPage {
             case "DELETE_USERS":
                 setURL = Endpoint.DELETE_USERS;
                 break;
+            case "NEGATIVE_CREATE_NEW_USERS":
+                setURL = Endpoint.NEGATIVE_CREATE_NEW_USERS;
+                break;
+            case "EDGE_CREATE_NEW_USERS":
+                setURL = Endpoint.EDGE_CREATE_NEW_USERS;
+                break;
             default:
                 System.out.println("input right url");
         }
@@ -105,12 +111,12 @@ public class ApiPage {
         assertThat(status).isIn("active", "inactive");
     }
 
-    public void validationResponseJsonWithJSONSchema1(String filename) {
-        File JSONFile = Utility.getJSONSchemaFile(filename);
-        res.then().assertThat().body(JsonSchemaValidator.matchesJsonSchema(JSONFile));
+    public void hitApiPostNegativeCreateNewUser() {
+        res = postNegativeCreateUser(setURL);
+        System.out.println(res.getBody().asString());
     }
 
-    public void validationResponseBodyCreateNewUsers1() {
+    public void validationResponseBodyNegativeCreateNewUsers() {
         JsonPath jsonPathEvaluator = res.jsonPath();
         Integer id = jsonPathEvaluator.get("id");
         String name = jsonPathEvaluator.get("name");
@@ -126,5 +132,24 @@ public class ApiPage {
 
         global_id = Integer.toString(id);
     }
+
+    public void hitApiPostEdgeCreateNewUser() {
+        res = postEdgeCreateUser(setURL);
+        System.out.println(res.getBody().asString());
+    }
+
+    public void validationResponseBodyEdgeCreateNewUsers() {
+        JsonPath jsonPathEvaluator = res.jsonPath();
+
+        String id  = jsonPathEvaluator.get("id");
+        String name = jsonPathEvaluator.get("name");
+        Integer age = jsonPathEvaluator.get("age");
+
+        assertThat(id).isNotNull();
+        assertThat(name).isNotNull();
+        assertThat(age).isBetween(1, 90);
+
+    }
+
 }
 
