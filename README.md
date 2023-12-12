@@ -26,3 +26,7 @@ Menjalankan Project :
 7. Convert json to json schema data di liquid.technologies.com
 8. Create json schema data file
 
+Test Case Negatif :
+<img width="1326" alt="Screenshot 2023-12-12 at 08 37 04" src="https://github.com/rianardiansari/projectFramework/assets/149749846/01524257-a327-4929-8227-c1d96f2c1c43">
+
+
